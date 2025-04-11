@@ -1,11 +1,14 @@
 /** @type {import('next').NextConfig} */
+
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
   },
-  assetPrefix: '',
-  basePath: '',
+  assetPrefix: isProd ? '/project-chronorift/' : '',
+  basePath: isProd ? '/project-chronorift' : '',
   trailingSlash: true,
 };
 
