@@ -24,14 +24,9 @@ function isSkippedTime(date) {
   });
   const parts = dtf.formatToParts(date);
   const hourPart = parts.find(part => part.type === 'hour');
-  const weekdayPart = parts.find(part => part.type === 'weekday');
-
   const hour = parseInt(hourPart.value, 10);
-  const weekday = weekdayPart.value;
 
-  const isSunday = weekday === 'Sun'; // using the abbreviated weekday string
-
-  return hour === 22 || (hour === 23 && isSunday);
+  return hour === 22;
 }
 
 function getNextSpawnTime() {
