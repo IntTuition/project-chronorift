@@ -253,7 +253,7 @@ export default function Home() {
   return (
     <main className="bg-gray-900 text-white min-h-screen flex flex-col items-center p-6 relative">
       <header className="text-center mb-10">
-        <h1 className="text-3xl font-bold mb-2">Project Chronorift (v0.1.0)</h1>
+        <h1 className="text-3xl font-bold mb-2">Project Chronorift <small>v0.1.1</small></h1>
       </header>
 
       <section className="bg-gray-800 p-6 rounded-2xl shadow-lg w-full max-w-2xl mb-6">
