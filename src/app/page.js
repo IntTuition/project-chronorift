@@ -66,8 +66,8 @@ function arithmeticMod(a, b) {
 
 /**
  * Counts the number of extra re-anchor events from `fromTime` (inclusive) up to `toTime` (inclusive).
- * An extra re-anchor event occurs each time the local Eastern time is Thursday and the clock has 
- * passed 4:00 AM. This iteration goes day by day from the base time.
+ * An extra re-anchor event occurs each time the local Eastern time is midnight on Thursday.
+ * This iteration goes day by day from the base time.
  *
  * @param {Date} fromTime - The starting time (typically baseTime).
  * @param {Date} toTime - The projected spawn time.
@@ -80,10 +80,10 @@ function countExtraThursdayAnchors(fromTime, toTime) {
   const totalDays = Math.floor((toTime - fromTime) / msInDay);
 
   // Iterate for each day offset from 0 to totalDays.
-  // (Day 0 corresponds to baseTime's day; if the projected time on that day is past 4am and that day is Thursday, count it.)
+  // (Day 0 corresponds to baseTime's day; if the projected time on that day is past midnight and that day is Thursday, count it.)
   for (let d = 0; d <= totalDays; d++) {
-    // Calculate the extra anchor event time: 4 AM local Eastern on day 'd'
-    const eventTime = new Date(fromTime.getTime() + d * msInDay + 4 * 60 * 60 * 1000);
+    // Calculate the extra anchor event time: midnight local Eastern on day 'd'
+    const eventTime = new Date(fromTime.getTime() + d * msInDay);
     // Only count the event if the projected spawn time is on or after the event
     if (toTime >= eventTime) {
       // Get the weekday of the event time in Eastern Time.
